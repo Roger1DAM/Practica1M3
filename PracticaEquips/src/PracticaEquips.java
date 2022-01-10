@@ -172,6 +172,7 @@ public class PracticaEquips {
         
         int i = 0;
         while ( i < ultimEquip) {
+            //Sumo 1 a la i per a que començi a contar els equips a partir de l'1.
             System.out.println( i + 1 + ".) " + equips[i] );
             i++;
         }
@@ -184,40 +185,32 @@ public class PracticaEquips {
 
         System.out.println("Estas modificant l'equip: " + equips[modEquip - 1] + " (Deixa en blanc si no vols modificar)");
 
+        //Guardo els partits en variables String per poder comprovar si són null 
+        //si són null es quedarà el valor que hi havia, si no es null es passarà a int i substituirà el valor.
         System.out.print("Introdueix els partits jugats: ");
         teclat.nextLine();
         String pjString = teclat.nextLine();
-        if (pjString.equals("")) {
-            System.out.println("No s'ha modificat");
-        } else {
+        if (!pjString.equals("")) {
             pj = Integer.parseInt(pjString);
         }
         
         System.out.print("Introdueix els partits guanyats: ");
         String pgString = teclat.nextLine();
-        if (pgString.equals("")) {
-            System.out.println("No s'ha modificat");
-        } else {
+        if (!pgString.equals("")) {
             pg = Integer.parseInt(pgString);
         }
 
         System.out.print("Introdueix els partits empatats: ");
         String peString = teclat.nextLine();
-        if (peString.equals("")) {
-            System.out.println("No s'ha modificat");
-        } else {
+        if (!peString.equals("")) {
             pe = Integer.parseInt(peString);
         }
 
         System.out.print("Introdueix els partits perduts: ");
         String ppString = teclat.nextLine();
-        if (ppString.equals("")) {
-            System.out.println("No s'ha modificat");
-        } else {
+        if (!ppString.equals("")) {
             pp = Integer.parseInt(ppString);
         }
-
-        
 
         puntuacions[modEquip - 1][0] = pj;
         puntuacions[modEquip - 1][1] = pg;
@@ -245,6 +238,7 @@ public class PracticaEquips {
 
         i = 0;
         int numLiders = 0;
+        //En cas que hi hagi més d'un equip empatat al primer lloc es guarden a l'array equipsLiders.
         String[] equipsLiders = new String[100];
         while ( i < ultimEquip ) {
             if ( puntuacions[i][4] == max ) {
@@ -255,6 +249,7 @@ public class PracticaEquips {
         }
 
         i = 0;
+        //Si detecta que hi ha més d'un equip empatat en primer lloc s'imprimirà en plural, si detecta que només n'hi ha un s'imprimirà en singular.
         if (numLiders > 0) {
             System.out.print("Els equips líders de la lliga són: ");
             while ( i <= numLiders ) {
@@ -280,6 +275,7 @@ public class PracticaEquips {
 
         i = 0;
         int numCuers = 0;
+        //En cas que hi hagi més d'un equip empatat en última posició es guarden en l'array equipsCuers.
         String[] equipsCuers = new String[100];
         while ( i < ultimEquip ) {
             if ( puntuacions[i][4] == minim ) {
@@ -290,6 +286,7 @@ public class PracticaEquips {
         }
 
         i = 0;
+        //Si detecta que hi ha més d'un equip empatat en últim lloc s'imprimirà en plural, si detecta que només n'hi ha un s'imprimirà en singular.
         if (numCuers > 0) {
             System.out.print("Els equips cuers de la lliga són: ");
             while ( i <= numCuers ) {
@@ -323,9 +320,6 @@ public class PracticaEquips {
         }
         
         pw.close();
-
-
-         
     }
 
 }
