@@ -21,11 +21,12 @@ public class PracticaEquips {
     static BufferedWriter bw = null;
     static PrintWriter pw = null;
     public static void main(String[] args) throws IOException {
+        
         llegirFitxers();
 
         boolean sortir = false;
+
         do {
-            
             System.out.println("\n-----Gestió lliga esportiva-----");
             System.out.println("1. Visualitzar puntuacions");
             System.out.println("2. Afegir nou equip");
@@ -34,7 +35,15 @@ public class PracticaEquips {
             System.out.println("5. Sortir");
             System.out.print("\nTRIA UNA OPCIÓ: ");
 
-            int opcio = teclat.nextInt();
+            int opcio;
+
+            while (true)
+            try {
+                opcio = Integer.parseInt(teclat.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("TRIA UNA OPCIÓ ");
+            }
 
             switch (opcio) {
             case 1:
