@@ -150,18 +150,21 @@ public class PracticaEquips {
         int pe = teclat.nextInt();
         System.out.println("Escriu els partits perduts: ");
         int pp = teclat.nextInt();
-        
-        int ultimEquip = Arrays.asList(equips).indexOf(null);
-        puntuacions[ultimEquip][0] = pj;
-        puntuacions[ultimEquip][1] = pg;
-        puntuacions[ultimEquip][2] = pe;
-        puntuacions[ultimEquip][3] = pp;
-        
-        equips[ultimEquip] = nom;
 
-        calcularPuntuacions();
+        if ( pj == pg + pe + pp ) {
+            int ultimEquip = Arrays.asList(equips).indexOf(null);
+            puntuacions[ultimEquip][0] = pj;
+            puntuacions[ultimEquip][1] = pg;
+            puntuacions[ultimEquip][2] = pe;
+            puntuacions[ultimEquip][3] = pp;
+            
+            equips[ultimEquip] = nom;
+            calcularPuntuacions();
+            System.out.println("\nS'ha afegit l'equip correctament!");
+        } else {
+            System.out.println("\nEls partits jugats han de ser igual a la suma dels partits guanyats, empatats i perduts!");
+        }
 
-        System.out.println("\nS'ha afegit l'equip correctament!");
     }
 
     static void modificarPuntuacions() {
@@ -212,12 +215,18 @@ public class PracticaEquips {
             pp = Integer.parseInt(ppString);
         }
 
-        puntuacions[modEquip - 1][0] = pj;
-        puntuacions[modEquip - 1][1] = pg;
-        puntuacions[modEquip - 1][2] = pe;
-        puntuacions[modEquip - 1][3] = pp;
+        if ( pj == pg + pe + pp ) {
+            puntuacions[modEquip - 1][0] = pj;
+            puntuacions[modEquip - 1][1] = pg;
+            puntuacions[modEquip - 1][2] = pe;
+            puntuacions[modEquip - 1][3] = pp;
+            calcularPuntuacions();
+            System.out.println("S'ha modificat l'equip correctament!");
+        } else {
+            System.out.println("\nEls partits jugats han de ser igual a la suma dels partits guanyats, empatats i perduts!");
+        }
 
-        calcularPuntuacions();
+        
     }
 
     static void visualitzarLider() {
